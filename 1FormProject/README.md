@@ -84,7 +84,7 @@ tomcat-embed-jasper – Enables JSP compilation in embedded Tomcat.
    http://localhost:8080/
    ```
 
-### 🧠 Key Concepts
+## 🧠 Key Concepts
 
 1. 🔁 Controllers
    Controllers handle incoming HTTP requests from Diapatcher Servlet and return responses using ModelAndView objects. They act as a bridge between the view (JSP) and the model (Java object).
@@ -92,7 +92,7 @@ tomcat-embed-jasper – Enables JSP compilation in embedded Tomcat.
 2. 🔗 Binding
    Spring MVC supports automatic binding of form data to Java objects. You don’t have to manually extract form parameters — Spring does it for you!
 
-### 🛠 Project Structure
+## 🛠 Project Structure
 
         ```none
         1FormProject/
@@ -112,11 +112,11 @@ tomcat-embed-jasper – Enables JSP compilation in embedded Tomcat.
         ├── pom.xml                               # Maven build file
         ```
 
-### 🎯 Future Enhancements
+## 🎯 Future Enhancements
 
 1. ✅ Add Automation test cases
 2. 🎨 Improve UI
 
-### ⚙️ Configuration Notes
+## ⚙️ Configuration Notes
 
 Ensure the packaging type is set to war, not jar, to support JSP rendering.
