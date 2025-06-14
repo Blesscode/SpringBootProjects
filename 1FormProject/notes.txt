@@ -1,0 +1,35 @@
+# Basic spring Form project
+
+the project conatins a beginner friendle form project
+
+# Topic Covered
+
+1. JSP
+2. SPRING MVC
+
+# How to run project
+
+1. clone the project
+2. open the project in your desired IDE
+3. Run the project as boot application
+
+# Future Scope
+
+1. Add automation test cases in test folder
+2. Make the UI more attractive
+
+# Quick Summary of some terms used
+
+1. Controllers = used to handel request from Diapatcher Servlet and response to Despacher Servlet in the form og ModelAndView object
+2. Binding = is performed to save the form data to a binding object
+   **Speciality of spring mvc that it handels the population of the obj by form data itself**
+
+# External Dependencies Used
+
+1. spring-boot-starter-web
+2. spring-boot-devtools
+3. tomcat-embed-jasper
+
+# Note
+
+while dev application the package type should be war not jar
