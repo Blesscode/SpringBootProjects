@@ -14,9 +14,9 @@ Welcome to a curated list of beginner-friendly Spring Boot projects. Each projec
 
 ## 📋 Projects
 
-| S.No | Project Name                                                                            | Tech Used                                                             | 🔗 Link                            |
-| ---- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------- |
-| 1    | [Spring MVC Form Project](#1️⃣-spring-mvc-form-project)                                  | Spring Boot, Spring MVC, JSP, DevTools, Tomcat Jasper                 | [View](./1FormProject/README.md)   |
-| 2    | [Spring MVC Form Project that save user data in database](#2️⃣-spring-mvc-form2-project) | Spring Boot, Spring MVC, JSP, DevTools, Tomcat Jasper,Spring JPA,JSTL | [View](./2FormProject-2/README.md) |
+| S.No | Project Name                                                                            | Tech Used                                                             | 🔗 Link                            | Topic Covered                      |
+| ---- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------- | ---------------------------------- |
+| 1    | [Spring MVC Form Project](#1️⃣-spring-mvc-form-project)                                  | Spring Boot, Spring MVC, JSP, DevTools, Tomcat Jasper                 | [View](./1FormProject/README.md)   | Form Binding in spring mvc         |
+| 2    | [Spring MVC Form Project that save user data in database](#2️⃣-spring-mvc-form2-project) | Spring Boot, Spring MVC, JSP, DevTools, Tomcat Jasper,Spring JPA,JSTL | [View](./2FormProject-2/README.md) | Database application in spring mvc |
 
 ---
