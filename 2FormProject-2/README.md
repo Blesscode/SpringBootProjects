@@ -10,6 +10,7 @@ Welcome to a **beginner-friendly Spring MVC form handling project** using JSP. T
 - [📚 Technologies & Dependencies](#-technologies--dependencies)
 - [🚀 Getting Started](#-getting-started)
 - [🎯 Future Enhancements](#-future-enhancements)
+- [🛠️ Project Structure](#-project-structure)
 - [⚙️ Configuration Notes](#-configuration-notes)
 
 ---
@@ -83,6 +84,25 @@ Welcome to a **beginner-friendly Spring MVC form handling project** using JSP. T
    ```
    http://localhost:8080/h2-console
    ```
+
+[🛠️ Project Structure](#-project-structure)
+
+```
+2FormProject-2
+|__src
+|    |__main
+|         |__java
+|              |__com.form2 =>Application.java
+|                    |_com.form2.Binding
+|                    |_com.form2.Controller
+|                    |_com.form2.Entity
+|                    |_com.form2.Repository
+|__src/main/resources =>Application.properties
+|__src/test/java
+|__src/main/webapp/views
+|__ pom.xml
+
+```
 
 ## 🎯 Future Enhancements
 
