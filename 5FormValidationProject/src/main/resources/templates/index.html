@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p th:if="${msg}" th:text="${msg}" style="color: green;"></p>
+	<form th:action="@{/save}"  th:object="${user}" method="post">
+		<table>
+			<tr>
+				<td>Id:</td>
+				<td><input type="number" th:field="*{uid}"/></td>
+				<td th:if="${#fields.hasErrors('uid')}" th:errors="*{uid}">Enter a valid id</td>
+			</tr>
+			<tr>
+				<td>FName:</td>
+				<td><input type="text" th:field="*{fname}"/></td>
+				<td th:if="${#fields.hasErrors('fname')}" th:errors="*{fname}"></td>
+			</tr>
+			<tr>
+				<td>LName:</td>
+				<td><input type="text" th:field="*{lname}"/></td>
+				<td th:if="${#fields.hasErrors('lname')}" th:errors="*{lname}">Enter a valid lname</td>
+			</tr>
+			<tr>
+				<td>Phno:</td>
+				<td><input type="number" th:field="*{phoneno}"/></td>
+				<td th:if="${#fields.hasErrors('phoneno')}" th:errors="*{phoneno}"></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input type="text" th:field="*{upassword}"/></td>
+				<td th:if="${#fields.hasErrors('upassword')}" th:errors="*{upassword}"></td>
+			</tr>
+			<tr>
+			
+			<tr>
+				<td>Gender:</td>
+				<td>
+					<input type="radio" th:field="*{gender}" value="Male" /> Male
+					<input type="radio" th:field="*{gender}" value="Female" /> Female
+				</td>
+				<td th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></td>
+			</tr>
+			<tr>
+				<td>Course:</td>
+				<td>
+					<select th:field="*{course}">
+						<option value="">--Select Course--</option>
+						<option value="Java">Java</option>
+						<option value="Python">Python</option>
+						<option value="Spring">Spring</option>
+					</select>
+				</td>
+				<td th:if="${#fields.hasErrors('course')}" th:errors="*{course}"></td>
+			</tr>
+			<tr>
+			    <td>Cities Lived In:</td>
+			    <td>
+			        <input type="checkbox" th:field="*{cities}" value="Mumbai" /> Mumbai
+			        <input type="checkbox" th:field="*{cities}" value="Delhi" /> Delhi
+			        <input type="checkbox" th:field="*{cities}" value="Chennai" /> Chennai
+			    </td>
+			    <td th:if="${#fields.hasErrors('cities')}" th:errors="*{cities}"></td>
+			</tr>
+			<tr>
+				<td>Agree Terms:</td>
+				<td><input type="checkbox" th:field="*{agreed}" /></td>
+				<td th:if="${#fields.hasErrors('agreed')}" th:errors="*{agreed}"></td>
+			</tr>
+				
+				<td><input type="submit" /></td>
+				
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>
