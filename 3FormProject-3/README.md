@@ -1,6 +1,6 @@
 # 🌿 Spring MVC Form Project-3
 
-Welcome to a **beginner-friendly Spring MVC form handling project** using JSP. This project showcases how to create and bind form data in a simple and clean Spring Boot + JSP application and store the data in the database.
+Welcome to a **beginner-friendly Spring MVC form handling project** using JSP. This project showcases how to create and bind form data in a simple and clean Spring Boot + JSP application and store the data in the database And show data on a seperate page.
 
 ---
 
