@@ -22,5 +22,7 @@ public class UserController {
 		model.addAttribute("msg", "user saved");
 		return"index";
 	}
+
+	
 }
 	
