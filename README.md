@@ -14,6 +14,7 @@ Welcome to a curated list of beginner-friendly Spring Boot projects. Each projec
   - [5️⃣Form validation - with thymeleaf](#5️⃣-spring-mvc-form5-project)
   - [6️⃣Processing time - with Interceptor](#6️⃣-spring-mvc-interceptor1-project)
   - [7️⃣Common validation lodic understanding - with Interceptor](#7️⃣-spring-mvc-interceptor2-project)
+  - 8️⃣Todo Application - without service layer](#8️⃣-todo-application)
 
 ---
 
@@ -28,5 +29,6 @@ Welcome to a curated list of beginner-friendly Spring Boot projects. Each projec
 | 5    | [Form validation - with thymeleaf](#5️⃣-spring-mvc-form5-project)                                                                           | Spring Boot, Spring MVC, Thymeleaf, DevTools                          | [View](./5FormValdiationProjects-5/README.md)            | Understand form validation in thymeleaf in spring mvc                   |
 | 6    | [Processing time - with Interceptor](#6️⃣-spring-mvc-interceptor1-project)                                                                  | Spring Boot, Spring MVC, Interceptor, DevTools                        | [View](./6InterceptorForProcessingTimeExplain/README.md) | Understand each request processing time using Interceptor in spring mvc |
 | 7    | [Common validation lodic understanding - with Interceptor](#7️⃣-spring-mvc-interceptor2-project)                                            | Spring Boot, Spring MVC, Interceptor, DevTools                        | [View](./7InterceptorForCommonValidation/README.md)      | Understand common Authentication using Interceptor in spring mvc        |
+| 8    | [Todo Application [without service layer]](#8️⃣-todo-application)                                            | Spring Boot, Spring MVC, Bootstrap, Thymeleaf, DevTools, Loombok, Postman                      | [View](./8TodoApplication/README.md)      | Applying all the above learned concept to build a todo application using spring mvc        |
 
 ---
