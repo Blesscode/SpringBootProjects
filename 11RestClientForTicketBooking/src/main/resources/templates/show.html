@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ticket Details Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+    <style>
+      .errorColour {
+        color: red;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body class="bg-warning">
+    <div
+      class="container d-flex justify-content-center align-items-center min-vh-100"
+    >
+      <div class="bg-white p-5 rounded shadow" style="min-width: 350px">
+        <h1 class="text-center mb-4">Your Ticket Details</h1>
+
+        <div th:object="${ticket}" >
+  <!-- TicketId -->
+  <div class="mb-3">
+    <label class="form-label">TicketID <span class="text-danger">*</span></label>
+    <input type="number" class="form-control" th:field="*{ticketid}" readonly />
+  </div>
+
+  <!-- To -->
+  <div class="mb-3">
+    <label class="form-label">To <span class="text-danger">*</span></label>
+    <input type="text" class="form-control" th:field="*{to}" readonly />
+  </div>
+
+  <!-- From -->
+  <div class="mb-3">
+    <label class="form-label">From <span class="text-danger">*</span></label>
+    <input type="text" class="form-control" th:field="*{from}" readonly />
+  </div>
+
+  <!-- Train Number -->
+  <div class="mb-3">
+    <label class="form-label">Train No <span class="text-danger">*</span></label>
+    <input type="number" class="form-control" th:field="*{trainno}" readonly />
+  </div>
+
+  <!-- Status -->
+  <div class="mb-3">
+    <label class="form-label">Status <span class="text-danger">*</span></label>
+    <input type="text" class="form-control" th:field="*{status}" readonly />
+  </div>
+
+  <!-- Cost -->
+  <div class="mb-3">
+    <label class="form-label">Cost <span class="text-danger">*</span></label>
+    <input type="number" class="form-control" th:field="*{cost}" readonly />
+  </div>
+
+  <!-- Button to booking page -->
+  <a href="/booking" class="btn btn-primary">Goto Booking Page</a>
+</div>
+
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
