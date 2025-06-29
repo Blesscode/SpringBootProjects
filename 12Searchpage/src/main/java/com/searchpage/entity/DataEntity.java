@@ -1,6 +1,6 @@
 package com.searchpage.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,6 +18,8 @@ public class DataEntity {
 	private String name;
 	private String status;
 	private String gender;
-	private Date start;
-	private Date end;
+	private LocalDate start;
+	private LocalDate end;
+	private Double salary;	
+	private String leavingReason;
 }
