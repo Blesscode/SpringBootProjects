@@ -166,13 +166,7 @@ public class ApplicationStarter implements ApplicationRunner {
         
         // can modify elements but cannot add or remove values 
         List<DataEntity>arr=Arrays.asList(record1,record2,record3,record4,record5,record6,record7,record8,record9,record10,record11,record12,record13,record14,record15);
-		repo.saveAll(arr);
-		
-		
-		
-		
-		
-		
-		
+		repo.saveAll(arr);	
+        	 	
 	}
 }
