@@ -3,11 +3,12 @@ package com.searchpage.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.searchpage.Binding.SearchRequest;
 import com.searchpage.entity.DataEntity;
 import com.searchpage.repository.DataRepository;
-
+@Service
 public class SearchServiceImplementation implements SearchService {
 	
 	//dependent on repo

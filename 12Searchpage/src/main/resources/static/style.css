@@ -59,6 +59,8 @@
         overflow: hidden;
         cursor: pointer;
         z-index: 1;
+          /* 🔽 Add this line */
+  pointer-events: auto;
       }
 
       /* Diagonal shine animation */
@@ -78,6 +80,7 @@
         transform: rotate(25deg);
         animation: shine 3s linear infinite;
         z-index: 0;
+                pointer-events: none; /* ✅ Add this line */
       }
 
       @keyframes shine {

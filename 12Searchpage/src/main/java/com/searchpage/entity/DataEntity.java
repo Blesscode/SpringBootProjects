@@ -1,5 +1,7 @@
 package com.searchpage.entity;
 
+
+
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
