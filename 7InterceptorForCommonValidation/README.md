@@ -117,6 +117,6 @@ In the current project we will understand a use case of interceptor and see how 
   - PostHandle
   - afterCompleteHandle
 - Focus on LogInterceptor class
-- We check the request be using HttpServletRequest request obj getParameter method
-- ⚠️Ensure "StoreCustomer".equals(CustomerId) as the checking condition not CustomerId.equals("StoreCustomer") to prevent null exception
-- To write or print the response back we use getWriter from HttpServletResponse response to give/print the result back
+  - We check the request be using HttpServletRequest request obj getParameter method
+  - ⚠️Ensure "StoreCustomer".equals(CustomerId) as the checking condition not CustomerId.equals("StoreCustomer") to prevent null exception
+  - To write or print the response back we use getWriter from HttpServletResponse response to give/print the result back
