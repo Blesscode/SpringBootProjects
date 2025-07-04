@@ -34,6 +34,14 @@
       input::placeholder {
         color: #cccccc;
       }
+      .border-ring{
+         background-color: #ffffff10;
+        color: #fff;
+        border: 1px solid #ccc;
+      }
+      .border-ring::placeholder{
+        color: #cccccc;
+      }
 
       .dropdown-menu {
         background-color: #2c2f48;
@@ -126,3 +134,20 @@
         position: relative;
         z-index: 1;
       }
+  /* Override Bootstrap's white background */
+table.styled-table,
+table.styled-table thead,
+table.styled-table tbody,
+table.styled-table tr,
+table.styled-table th,
+table.styled-table td {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Optional hover effect */
+table.styled-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
