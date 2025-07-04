@@ -13,6 +13,8 @@ import com.searchpage.Binding.SearchRequest;
 import com.searchpage.entity.DataEntity;
 import com.searchpage.service.SearchServiceImplementation;
 
+import jakarta.servlet.http.HttpServletResponse;
+
 @Controller
 public class SearchPageController {
 
@@ -58,6 +60,37 @@ public class SearchPageController {
 		return "SearchPage";
 
 	}
+	
+	//3. export to pdf
+	@GetMapping("/pdf")
+	public void getPdf(HttpServletResponse response)throws Exception {
+		//set the response type that will be accepted by browser
+			//application/octet-stream = excel
+			//application/pdf = pdf
+		response.setContentType("application/pdf");
+		//send file as attachment to browser
+		response.addHeader("Content-Disposition", "attachment;filename=userDetails.pdf");
+		
+		//logic to get excel file 
+		service.exportToPdf(response);
+		
+	}
+	
+	//4. export to excel
+	@GetMapping("/excel")
+	public void getExcel(HttpServletResponse response)throws Exception {
+		//set the response type that will be accepted by browser
+			//application/octet-stream = excel
+			//application/pdf = pdf
+		response.setContentType("application/octet-stream");
+		//send file as attachment to browser
+		response.addHeader("Content-Disposition", "attachment;filename=userDetails.xls");
+		
+		//logic to get excel file 
+		service.exportToExcel(response);
+		
+	}
+	
 	
 	
 }

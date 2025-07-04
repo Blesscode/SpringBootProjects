@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
+    <title>User Management Page</title>
     <link rel="stylesheet" th:href="@{/style.css}" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
@@ -11,8 +11,16 @@
       integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
       crossorigin="anonymous"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
+    <!-- header div -->
+    <div class="container shadow p-3 mb-5 rounded header-head">
+      <h1>User Management</h1>
+    </div>
     <!---------------------------------search div------------------------------------------------------->
     <div class="container shadow p-3 mb-5 rounded">
       <form th:action="@{/search}" th:object="${data}" method="post">
@@ -81,14 +89,10 @@
             </button>
             <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item" href="#" onclick="setGender('M')"
-                  >M</a
-                >
+                <a class="dropdown-item" href="#" onclick="setGender('M')">M</a>
               </li>
               <li>
-                <a class="dropdown-item" href="#" onclick="setGender('F')"
-                  >F</a
-                >
+                <a class="dropdown-item" href="#" onclick="setGender('F')">F</a>
               </li>
               <li>
                 <a
@@ -162,7 +166,30 @@
       </table>
     </div>
     <!----------------------------------------------------------export------------------------------------------------------------------------------------------------------------------->
-    <div class="container export-container"></div>
+    <div class="container export-container shadow p-3 mb-5 rounded export-head">
+      <h3>Export To</h3>
+      <div class="container">
+        <div
+          class="container button-Design d-flex justify-content-around flex-wrap"
+        >
+          <a href="/excel"
+            class="btn btn-secondary btn-sparkle"
+            aria-expanded="false"
+            id="excelButton"
+          >
+            Excel
+          </a>
+          <a
+           href="/pdf"
+            class="btn btn-secondary btn-sparkle"
+            aria-expanded="false"
+            id="pdfButton"
+          >
+            Pdf
+          </a>
+        </div>
+      </div>
+    </div>
     <script th:src="@{/index.js}"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
