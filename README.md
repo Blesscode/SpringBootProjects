@@ -37,3 +37,9 @@ Welcome to a curated list of beginner-friendly Spring Boot projects. Each projec
 | 11    | [Restclient for Ticket booking api Development project](#🔟-ticketBookingClient)                                            | Spring Boot, Controller, Thymeleaf, Lombook, Rest API, Postman                      | [View](./11TicketBooking-RestAPI/README.md)      | Building Rest Api client for project 10, distributed application   |
 
 ---
+
+Spring Boot FullStack project Lists
+Contains list of full Spring boot projects from UI to backend imlementation projects based on above content study
+| S.No | Project Name                                                                                                                               | Tech Used                                                                                | 🔗 Link                                                  | 
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | -------------------------------------------------------- | 
+| 1    | [Employee Search Page](#1️⃣-employee-search-page)                                                                                           | Spring Boot[MVC,JPA], Thymeleaf, Bootstrap, [HTML,CSS,JS] , Apache POI, OpenPdf ,Lombok  | [View](./1FormProject/README.md)                        
