@@ -1,6 +1,7 @@
 # 🌿 Spring MVC User Search Page **THYMELEAF**
 
 Following project is user search page project build with spring boot + thymeleaf utilizing concepts like [SOLID Design Principles + Spring MVC + Bootstrap + JSP + Apache POI + Open Pdf + Thymeleaf + Lombok]
+
 ---
 
 ## 📘 Table of Contents
@@ -21,25 +22,24 @@ Following project is user search page project build with spring boot + thymeleaf
 - Download report as excel or pdf at your browser
 - Display records on the ui based on the search filter
 - Responsive UI
-  
 
 ---
 
 ## 📚 Technologies & Dependencies
 
-| Tool/Library              | Purpose                                    | Type                |
-| ------------------------- | ------------------------------------------ | ------------------- |
-| `Spring Boot`             | Base framework                             | Core Technology     |
-| `Spring MVC`              | Web MVC architecture                       | Core Technology     |
-| `Thymeleaf`               | View technology                            | External Dependency |
-| `spring-boot-devtools`    | Hot reload during development              | External Dependency |
-| `spring-boot-starter-web` | Adds Spring MVC, REST, and embedded Tomcat | External Dependency |
-| `spring-boot-starter-data-jpa` | Adds Spring data JPA options | External Dependency |
-|`spring-boot-starter-thymeleaf`| Adds Thymeleaf to our project | External Dependency |
-|`mysql-connector-j`| Adds MySQL driver | External Dependency |
-|`lombok`| To ease getters,setters & toString options | External Dependency |
-|`poi-ooxml`| For java to excel operations | External Dependency |
-|`openpdf`| For java to pdf operations | External Dependency |
+| Tool/Library                    | Purpose                                    | Type                |
+| ------------------------------- | ------------------------------------------ | ------------------- |
+| `Spring Boot`                   | Base framework                             | Core Technology     |
+| `Spring MVC`                    | Web MVC architecture                       | Core Technology     |
+| `Thymeleaf`                     | View technology                            | External Dependency |
+| `spring-boot-devtools`          | Hot reload during development              | External Dependency |
+| `spring-boot-starter-web`       | Adds Spring MVC, REST, and embedded Tomcat | External Dependency |
+| `spring-boot-starter-data-jpa`  | Adds Spring data JPA options               | External Dependency |
+| `spring-boot-starter-thymeleaf` | Adds Thymeleaf to our project              | External Dependency |
+| `mysql-connector-j`             | Adds MySQL driver                          | External Dependency |
+| `lombok`                        | To ease getters,setters & toString options | External Dependency |
+| `poi-ooxml`                     | For java to excel operations               | External Dependency |
+| `openpdf`                       | For java to pdf operations                 | External Dependency |
 
 ## 🚀 Getting Started
 
@@ -48,7 +48,7 @@ Following project is user search page project build with spring boot + thymeleaf
 - Java 8 or later
 - Maven or Gradle
 - IDE (Eclipse, IntelliJ, VS Code)
-- Spring Boot + Thymeleaf + HTML + CSS + JS 
+- Spring Boot + Thymeleaf + HTML + CSS + JS
 
 ### 🔧 Steps to Run
 
@@ -78,6 +78,7 @@ Following project is user search page project build with spring boot + thymeleaf
    ```
    http://localhost:8080/
    ```
+
    perform actions visible on UI
 
 [🛠️ Project Structure](#-project-structure)
@@ -133,5 +134,3 @@ Following project is user search page project build with spring boot + thymeleaf
 - Service has an interface and a implementation class of that interface
 - Every action in the UI that need the db action should go through controller then service then to db that's why we have a service for status too because we cannot directly comm to db
 - Each service should implement only 1 functionality that's why we keept the implementation into helper classes following SOLID principles
-  
-  
