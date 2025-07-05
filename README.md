@@ -40,7 +40,7 @@ Welcome to a curated list of beginner-friendly Spring Boot projects. Each projec
 
 ## 📋 Spring Boot Projects : FullStack project Lists
 
-Contains list of full Spring boot projects from UI to backend imlementation projects based on above content study
+Contains list of full Spring boot projects from UI to backend implementation projects based on above content study
 
 ## 📘 Project list Index
 
