@@ -11,7 +11,7 @@ import lombok.Data;
 @Entity
 @Table(name="jobroledtls")
 @Data
-public class JobRoleEntity {
+public class JobRoleOptionsEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
