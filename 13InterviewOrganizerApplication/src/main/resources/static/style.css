@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+}
+body{
+  overflow-x: hidden;
+}
+.navStyle{
+    background-color: transparent;
+}
+.metallic-btn {
+  position: relative;
+  padding: 10px 30px;
+  color: rgba(255, 255, 255, 0.55);
+  background-color: black;
+  border-left: 1px solid white;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.3s ease;
+  z-index: 1;
+}
+.animateText>h2{
+  font-weight: 600;
+  font-size: 85px; 
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: white;
+}
+.animateText{
+  margin-top: 2%;
+}
+/*body design*/
+.page1{
+  width: 100%;
+  height:100%;
+  background-color: black;
+}
+.page2{
+  width: 100%;
+  height:100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  
+}
+.hire-img{
+  object-fit: cover;
+  border-radius: 50%;
+
+  object-fit: cover;
+}
+.hire-container{
+margin-right: 6%;
+}
+.img-border{
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.card {
+
+  padding: 1%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.job-role{
+    width: 100%;
+  height:100%;
+  background-color: white;
+  overflow-x: hidden;
+  padding: 2%;
+ 
+
+}
+.note{
+  background-color: black;
+  height:20%;
+}
+
