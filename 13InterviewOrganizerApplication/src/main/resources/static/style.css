@@ -85,4 +85,40 @@ margin-right: 6%;
   background-color: black;
   height:20%;
 }
+/*login*/
+.register{
+  height:97vh;
+  width:40%;
+  background: linear-gradient(to bottom,#dda0dd, #8e2de2, #000);
+  border-radius: 25px;
+  color: white;
+  /*min-width: max-content;*/
 
+}
+@media (max-width: 500px) {
+  .register {
+    width: auto;
+    inline-size: min-content;
+    margin: 2% auto;
+    /*min-width: max-content;*/
+
+  }
+}
+.registerText ,h1,h2{
+  padding: 2%;
+
+}
+.login{
+  background-color: black;
+  width:54%;
+  /*min-width:max-content; ;*/
+  color: white;
+}
+@media (max-width: 500px) {
+  .login {
+     width: auto;
+    inline-size: min-content;
+       margin: 2% auto;
+
+  }
+}

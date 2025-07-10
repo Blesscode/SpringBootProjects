@@ -17,3 +17,17 @@ gsap.from(".animateText>h2",{
 // yoyo:"true"
 
 // })
+gsap.from(".register",{
+    y:1200,
+    opacity:0,
+    delay:0,
+    duration:1
+})
+gsap.from(".inputFeilds",{
+    x:1200,
+    opacity:0,
+    delay:0,
+    duration:1
+    //duration:0.6,
+    ///stagger:1
+})
