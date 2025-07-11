@@ -5,7 +5,8 @@ import lombok.Data;
 @Data
 public class RegisterPageBinding {
 
-	private String name;
-	private String email;
-	private Long phoneNo;
+	private String interviewerName;
+	private String interviewerEmail;
+	private Long interviewerPhone;
+	private String username;
 }
