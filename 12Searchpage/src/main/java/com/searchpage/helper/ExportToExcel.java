@@ -1,5 +1,7 @@
 package com.searchpage.helper;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class ExportToExcel {
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 	
 	
+@SuppressWarnings("resource")
 public void toexcel(HttpServletResponse response,List<DataEntity> allData)throws Exception{
 //1. create woorkbook
 		Workbook workbook=new HSSFWorkbook();
@@ -55,7 +58,10 @@ public void toexcel(HttpServletResponse response,List<DataEntity> allData)throws
 		}
 		
 		//create a strem to send data as download
-		//=> to save the file to project folder/server = use FileOutputStream 
+		//=> to save the file to project folder/server = use FileOutputStream
+		FileOutputStream outputStream2 = new FileOutputStream(new File("Data.xls"));
+		workbook.write(outputStream2);
+		outputStream2.close();
 		//=> to save the file at browser i.e. download = send the file as the response to browser using httpservletresponse obj
 		ServletOutputStream outputStream = response.getOutputStream();
 		workbook.write(outputStream);

@@ -1,4 +1,5 @@
 package com.searchpage.service;
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,8 +79,9 @@ public class SearchServiceImplementation implements SearchService {
 		// TODO Auto-generated method stub
 		//get data
 				List<DataEntity> allData = repo.findAll();
-				pdf.topdf(response,allData);
-
+				File file=new File("Data.pdf");
+				pdf.topdf(response,allData,file);
+				file.delete();//so that files don't start getting stored in the project
 		return true;
 	}
 
@@ -89,8 +91,9 @@ public class SearchServiceImplementation implements SearchService {
 		
 		//get data
 		List<DataEntity> allData = repo.findAll();
+		File file=new File("Data.xls");
 		excel.toexcel(response,allData);
-
+		file.delete(); //so that files don't start getting stored in the project
 		return true;
 	}
 

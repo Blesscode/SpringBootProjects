@@ -1,5 +1,7 @@
 package com.searchpage.helper;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -21,11 +23,13 @@ import jakarta.servlet.http.HttpServletResponse;
 @Component
 public class ExportToPdf {
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-	public void topdf(HttpServletResponse response,List<DataEntity> all)throws Exception{
+	public void topdf(HttpServletResponse response,List<DataEntity> all,File pdfFile)throws Exception{
 //1. make pdf doc obj
 		Document document=new Document(PageSize.A4);
 		//2. getting instance of pdf writter to write in pdf
 		PdfWriter.getInstance(document, response.getOutputStream());
+		//to save pdf in project structure
+		PdfWriter.getInstance(document, new FileOutputStream(pdfFile));
 		//3. open doc to write
 		document.open();
 		//4. font size and style
