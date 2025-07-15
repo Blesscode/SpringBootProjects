@@ -27,6 +27,8 @@ public class InterviewerDtlsEntity {
 	@Column(name="interviewerPassword")
 	private String interviewerPassword;
 	@Column(name="interviewerAccountActive")
-	private Boolean interviewerAccountActive=false;
+	private boolean interviewerAccountActive; 
+	@Column(name=" activeToken ")
+	private String activeToken;//unique activation token
 	
 }

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.app.binding.RegisterPageBinding;
 import com.app.service.InterviewerService;
 
+import jakarta.servlet.http.HttpServletResponse;
+
 @Controller
 public class RegisterPageController {
 
@@ -20,14 +22,17 @@ public class RegisterPageController {
 	public String registrationPageShow(Model model) {
 		
 		
-	       model.addAttribute("regPageBinding", new RegisterPageBinding());
+	    model.addAttribute("regPageBinding", new RegisterPageBinding());
 		return "Register";
 	}
 	//2.Get registration page data
 	@PostMapping("/registerSubmit")
-	public String getRegistrationDtlsAndSendEmail(RegisterPageBinding registerdtls,Model model) {
+	public String getRegistrationDtlsAndSendEmail(HttpServletResponse httpresponse,RegisterPageBinding registerdtls,Model model)throws Exception {
 		//1. get registration dtls from user
 		System.out.println(registerdtls);
+		httpresponse.setContentType("application/pdf");
+		//send file as attachment to browser
+		httpresponse.addHeader("Content-Disposition", "attachment;filename=ActivationEmail.pdf");
 		/*
 		 * NOTES :if void return type then will look for registerSubmit.html
 		controller map redirect = redirect:/xyz search for/xyz controller mapping.
@@ -36,11 +41,14 @@ public class RegisterPageController {
 		//return "Register";*/
 
 		//2. save/register new user dtls in db
-		service.registerNewInterviewer(registerdtls);
+		service.registerNewInterviewer(registerdtls, httpresponse);
 		//3. send activation using dtls to user acc
-		//service.sendActivationPwdToEmail(registerdtls.getEmail());
+		
+		
+		//service.createActivationLink(registerdtls,httpresponse);
 
 		//4. create new registration page http req since old one is done by registring
+
 		return "redirect:/registration";
 
 	}
