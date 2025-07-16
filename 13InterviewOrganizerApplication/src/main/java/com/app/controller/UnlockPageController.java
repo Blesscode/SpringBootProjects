@@ -46,6 +46,7 @@ public class UnlockPageController {
 			model.addAttribute("email", email);
 		    model.addAttribute("activationPageBinding", new UnlockPageBinding());
 			return "ActivePage";
+
 			
 			
 			//todo : implement confirm pwd check + perform link dead fn

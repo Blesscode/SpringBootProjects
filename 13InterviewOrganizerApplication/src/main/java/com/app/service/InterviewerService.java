@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public interface InterviewerService  {
 	
 	
-	Boolean registerNewInterviewer(RegisterPageBinding register,HttpServletResponse httpresponse)throws Exception;
+	Boolean registerNewInterviewer(RegisterPageBinding register);
 	
 	Boolean saveNewInterviewer(RegisterPageBinding register);
 	
@@ -19,7 +19,7 @@ public interface InterviewerService  {
 
 	Boolean findInterviewer(LoginPageBinding login);
 
-	Boolean activateAccount(UnlockPageBinding unlock);
+	Boolean activationMailSending(String pwd, String mail);
 
 	Boolean sendPwdToEmail(String email);
 

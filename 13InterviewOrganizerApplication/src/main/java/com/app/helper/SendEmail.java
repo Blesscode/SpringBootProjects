@@ -1,5 +1,10 @@
 package com.app.helper;
 
+import java.io.File;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
 import com.lowagie.text.Document;
@@ -9,6 +14,7 @@ import com.lowagie.text.PageSize;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfWriter;
 
+import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpServletResponse;
 
 
@@ -29,12 +35,41 @@ public class SendEmail {
 		fontTitle.setSize(15);
 		
 		//5.create paragraph
-		Paragraph paragraph = new Paragraph("Your activation password is"+" "+pwd+"to activate your account please click the following link and reset your password"+link);
+		Paragraph paragraph = new Paragraph("Your activation password is"+" "+pwd+" "+"to activate your account please click the following link and reset your password"+" "+link);
 		//set alignment of paragraph
 		paragraph.setAlignment(Paragraph.ALIGN_CENTER);
 		//add paragraph to doc
 		document.add(paragraph);
 		document.close();
 	}
+
+		@Autowired
+		private JavaMailSender mailSender; //interface provided by spring mail 
+		
+		public boolean sendEmail(String subject,String body,String to){
+			try{
+				//mailsender.send()//simple mail object = simple text
+				MimeMessage mimeMsg=mailSender.createMimeMessage();//mime message object = send some attachement
+				MimeMessageHelper helper=new MimeMessageHelper(mimeMsg,true);//constructor injection
+				helper.setSubject(subject);
+				helper.setText(body,true);//true = my body has html text
+				helper.setTo(to);
+				// to send attachment
+				//helper.addAttachment("Saved file in a system",f);
+				
+				
+				
+				mailSender.send(mimeMsg);
+	            return true;
+
+			}catch(Exception e){
+				 e.printStackTrace(); // corrected from `printStacktrace`
+		            return false;
+			}
+		}
+		
+	
+
+	
 	
 }

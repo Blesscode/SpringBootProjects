@@ -1,5 +1,6 @@
 package com.app.service;
 
+import java.io.File;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.app.binding.LoginPageBinding;
 import com.app.binding.RegisterPageBinding;
-import com.app.binding.UnlockPageBinding;
 import com.app.entity.InterviewerDtlsEntity;
 import com.app.helper.GeneratePwd;
 import com.app.helper.SendEmail;
@@ -31,7 +31,7 @@ public class InterviewerServiceImpl implements InterviewerService {
 	}
 	
 	@Override
-	public Boolean registerNewInterviewer(RegisterPageBinding register,HttpServletResponse httpresponse)throws Exception {
+	public Boolean registerNewInterviewer(RegisterPageBinding register) {
 		// TODO Auto-generated method stub
 		//1. save the user to db
 		this.saveNewInterviewer(register);
@@ -43,7 +43,8 @@ public class InterviewerServiceImpl implements InterviewerService {
 		String activationLink=this.createActivationLink(register.getInterviewerEmail());
 		//4. send pwd to mail with activation page url [url is unique to each person]
 		System.out.println(activationPwd);
-		emailRepo.topdf(httpresponse, activationPwd, activationLink);
+		//emailRepo.topdf(httpresponse, activationPwd, activationLink);
+		this.activationMailSending(activationPwd, activationLink);
 			
 		return null;
 	}
@@ -80,9 +81,17 @@ public class InterviewerServiceImpl implements InterviewerService {
 	}
 
 	@Override
-	public Boolean activateAccount(UnlockPageBinding unlock) {
+	public Boolean activationMailSending(String pwd, String link) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String subject="Your activation Link";
+		
+		String body="Your activation password is"+" "+pwd+" "+"to activate your account please click the following link and reset your password"+" "+link;
+		
+		String to="reciver@gmail.com";
+		
+		emailRepo.sendEmail(subject,body,to);
+		return true;
 	}
 
 	@Override

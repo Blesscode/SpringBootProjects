@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import com.app.binding.RegisterPageBinding;
 import com.app.service.InterviewerService;
 
@@ -27,7 +29,7 @@ public class RegisterPageController {
 	}
 	//2.Get registration page data
 	@PostMapping("/registerSubmit")
-	public String getRegistrationDtlsAndSendEmail(HttpServletResponse httpresponse,RegisterPageBinding registerdtls,Model model)throws Exception {
+	public String getRegistrationDtlsAndSendEmail( HttpServletResponse httpresponse,@ModelAttribute RegisterPageBinding registerdtls,Model model)throws Exception {
 		//1. get registration dtls from user
 		System.out.println(registerdtls);
 		httpresponse.setContentType("application/pdf");
@@ -41,7 +43,7 @@ public class RegisterPageController {
 		//return "Register";*/
 
 		//2. save/register new user dtls in db
-		service.registerNewInterviewer(registerdtls, httpresponse);
+		service.registerNewInterviewer(registerdtls);
 		//3. send activation using dtls to user acc
 		
 		
@@ -49,7 +51,7 @@ public class RegisterPageController {
 
 		//4. create new registration page http req since old one is done by registring
 
-		return "redirect:/registration";
+		return "registration";
 
 	}
 	

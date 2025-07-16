@@ -22,7 +22,7 @@
         <div class="registerText">
           <form
             class="row g-3"
-            th:action="@{/activationSubmit}"
+            th:action="@{/activationSubmit(email=${email})}"
             th:object="${activationPageBinding}"
             method="post"
           >

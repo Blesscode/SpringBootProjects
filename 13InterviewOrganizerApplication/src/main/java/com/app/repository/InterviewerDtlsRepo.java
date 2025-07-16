@@ -28,6 +28,6 @@ public interface InterviewerDtlsRepo extends JpaRepository<InterviewerDtlsEntity
 	@Transactional
 	@Modifying
 	@Query("UPDATE InterviewerDtlsEntity SET interviewerPassword = :newPassword WHERE interviewerEmail = :email")
-	Boolean updatePasswordByEmail(@Param("newPassword") String newPassword, @Param("email") String email);
+	void updatePasswordByEmail(@Param("newPassword") String newPassword, @Param("email") String email);
 
 }
