@@ -24,10 +24,23 @@ public interface InterviewerDtlsRepo extends JpaRepository<InterviewerDtlsEntity
 	@Query("Select interviewerPassword from InterviewerDtlsEntity where interviewerEmail=:email or interviewerUsername=:username")
 	String findActivationPwd(@Param("email") String email,@Param("username")String username);
 	
+	@Query("Select activeToken from InterviewerDtlsEntity where interviewerEmail=:email")
+	String getTokenByEmail(@Param("email") String email);
+
 	//update pwd where email=email
 	@Transactional
 	@Modifying
 	@Query("UPDATE InterviewerDtlsEntity SET interviewerPassword = :newPassword WHERE interviewerEmail = :email")
 	void updatePasswordByEmail(@Param("newPassword") String newPassword, @Param("email") String email);
 
+	
+	@Transactional
+	@Modifying
+	@Query("UPDATE InterviewerDtlsEntity SET interviewerAccountActive = :status WHERE interviewerEmail = :email")
+	void updateAccountStatus(@Param("status") Boolean status, @Param("email") String email);
+	
+	@Transactional
+	@Modifying
+	@Query("UPDATE InterviewerDtlsEntity SET activeToken = :token WHERE interviewerEmail = :email")
+	void updateToken(@Param("token")String token, @Param("email") String email);
 }

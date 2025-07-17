@@ -8,23 +8,27 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public interface InterviewerService  {
 	
-	
+	//1. register the user with the website i.e. create an acc
 	Boolean registerNewInterviewer(RegisterPageBinding register);
 	
-	Boolean saveNewInterviewer(RegisterPageBinding register);
+	   //helper service methods for registering the user
+		//Boolean saveNewInterviewer(RegisterPageBinding register);
+		
+		//String createActivationLink(String email);
+		
+		//Boolean activationMailSending(String pwd, String mail);
 	
-	String createActivationLink(String email);
-	
-	Boolean authenticateUserTempPassword(String tempPwd,String email,String newPwd);
+	//2. unlock it's acc
+	Boolean activatingAccount(String tempPwd,String email,String newPwd);
 
 	Boolean findInterviewer(LoginPageBinding login);
 
-	Boolean activationMailSending(String pwd, String mail);
+
 
 	Boolean sendPwdToEmail(String email);
 
 	
 
-	Boolean lockActivationLink();
-	
+	Boolean lockActivationLink(String email);
+    Boolean authenticateLinkStatus(String email,String reciveToken);
 }

@@ -1,6 +1,5 @@
 package com.app.service;
 
-import java.io.File;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
@@ -12,47 +11,66 @@ import org.springframework.stereotype.Service;
 import com.app.binding.LoginPageBinding;
 import com.app.binding.RegisterPageBinding;
 import com.app.entity.InterviewerDtlsEntity;
+import com.app.helper.ActivationLinkGenerator;
 import com.app.helper.GeneratePwd;
 import com.app.helper.SendEmail;
 import com.app.repository.InterviewerDtlsRepo;
 
-import jakarta.servlet.http.HttpServletResponse;
 @Service
 public class InterviewerServiceImpl implements InterviewerService {
 
-	private InterviewerDtlsRepo interviewerrepo;
-	private GeneratePwd activationobj;
-	private SendEmail emailRepo;
 	@Autowired
-	InterviewerServiceImpl(InterviewerDtlsRepo interviewerrepo,GeneratePwd activationobj,SendEmail emailRepo){
-		this.interviewerrepo= interviewerrepo;
-		this.activationobj=activationobj;
-		this.emailRepo=emailRepo;
-	}
-	
+	private InterviewerDtlsRepo interviewerRepo;
+	@Autowired
+	private GeneratePwd activationPwd;
+	@Autowired
+	private SendEmail emailUtils;
+	@Autowired
+	private ActivationLinkGenerator linkGeneratorUtil;
+
+	/*
+	 * To register new user account
+	 * Activieties in register business logic
+		 * 1. save the user dtls to db
+		 * 2. get the pwd for activation of user acc
+		 * 3. create an acc activation link
+		 * 4. send activation link to email
+	 * @param (register model from the registerPageBinding containing the user details from registration page)
+	 * @return Boolean
+	 */
 	@Override
 	public Boolean registerNewInterviewer(RegisterPageBinding register) {
 		// TODO Auto-generated method stub
 		//1. save the user to db
 		this.saveNewInterviewer(register);
 		//2. find password based on username or email
-		String interviewer_username = register.getUsername();
-		String interviewer_email = register.getInterviewerEmail();
-		String activationPwd = interviewerrepo.findActivationPwd(interviewer_email, interviewer_username);
+		String activationPwd = interviewerRepo.findActivationPwd(register.getInterviewerEmail(), register.getUsername());
+		System.out.println("got pwd: "+activationPwd);
 		//3. create link 
-		String activationLink=this.createActivationLink(register.getInterviewerEmail());
+		//String activationLink=this.createActivationLink(register.getInterviewerEmail());
+		String activationLink = linkGeneratorUtil.createActivationLink(register.getInterviewerEmail());
+		System.out.println(activationLink);
 		//4. send pwd to mail with activation page url [url is unique to each person]
-		System.out.println(activationPwd);
 		//emailRepo.topdf(httpresponse, activationPwd, activationLink);
-		this.activationMailSending(activationPwd, activationLink);
+		//this.activationMailSending(activationPwd, activationLink);
+		emailUtils.activationMailSending(activationPwd, activationLink);
 			
 		return null;
 	}
-	@Override
-	public Boolean saveNewInterviewer(RegisterPageBinding register) {
+
+	/*
+	 * Helper method for registerNewInterviewer method to save/ register user 
+	 * Generate a pwd for user and save that also
+	 * Saves all details of user 
+	 * [USE GENERATE PWD + SAVE USER]
+	 * @param (register model from the registerPageBinding containing the user details from registration page)
+	 * @return Boolean
+	 */
+	private Boolean saveNewInterviewer(RegisterPageBinding register) {
 		// TODO Auto-generated method stub
 		//1. get temporary gen pwd
-		String ActivationPassword=activationobj.genPwdForUnlocking();
+		String ActivationPassword=activationPwd.genPwdForUnlocking();
+		System.out.println("generated pwd: "+ActivationPassword);
 		//2. save the data to db
 	    //2. set to db ---> no here name and everything is null when entity is saved
 		InterviewerDtlsEntity entity = new InterviewerDtlsEntity();
@@ -67,7 +85,7 @@ public class InterviewerServiceImpl implements InterviewerService {
 		entity.setActiveToken(UUID.randomUUID().toString());
 		
 		entity.setInterviewerAccountActive(false);
-		interviewerrepo.save(entity);
+		interviewerRepo.save(entity);
 		
 		 
 
@@ -80,7 +98,7 @@ public class InterviewerServiceImpl implements InterviewerService {
 		return null;
 	}
 
-	@Override
+	/*@Override
 	public Boolean activationMailSending(String pwd, String link) {
 		// TODO Auto-generated method stub
 		
@@ -90,9 +108,9 @@ public class InterviewerServiceImpl implements InterviewerService {
 		
 		String to="reciver@gmail.com";
 		
-		emailRepo.sendEmail(subject,body,to);
+		emailUtils.sendEmail(subject,body,to);
 		return true;
-	}
+	}*/
 
 	@Override
 	public Boolean sendPwdToEmail(String email) {
@@ -100,7 +118,7 @@ public class InterviewerServiceImpl implements InterviewerService {
 		return null;
 	}
 
-	@Override
+	/*@Override
 	public String createActivationLink(String interviewer_email){
 		// TODO Auto-generated method stub
 		
@@ -111,7 +129,7 @@ public class InterviewerServiceImpl implements InterviewerService {
 		//String interviewer_email = register.getInterviewerEmail();
 		//String activationPwd = interviewerrepo.findActivationPwd(interviewer_email, interviewer_username);
 		//2. create link
-		String token=interviewerrepo.findByActiveToken(interviewer_email) ;
+		String token=interviewerRepo.findByActiveToken(interviewer_email) ;
 		String encodedEmail = URLEncoder.encode(interviewer_email, StandardCharsets.UTF_8);
 		String encodedToken = URLEncoder.encode(token, StandardCharsets.UTF_8);
 		String activationLink = "http://localhost:8080/activePage?token=" + encodedToken+"&email=" + encodedEmail;
@@ -121,15 +139,25 @@ public class InterviewerServiceImpl implements InterviewerService {
 		//2. send pwd to mail with activation page url [url is unique to each person]
 		//emailRepo.topdf(httpresponse, activationPwd, activationLink);
 		return activationLink;
-	}
+	}*/
 	
+	/*
+	 * Perform user account activation by taking the password provided and
+	 * check/authenticating if the password is correct then activate user account and save the new password
+	 * else reload the activation link page
+	 * @param (temporaryPassword that is provided to activate the account, email to autherize the temp pwd belong to which account,new password to change)
+	 * @return Boolean
+	 */
 	@Override
-	public Boolean authenticateUserTempPassword(String tempPwd,String email,String newPwd) {
+	
+	public Boolean activatingAccount(String tempPwd,String email,String newPwd) {
 		// TODO Auto-generated method stub
-		String tempPwdFormDb = interviewerrepo.findActivationPwd(email, null);
+	
+		String tempPwdFormDb = interviewerRepo.findActivationPwd(email, null);
 		if(tempPwdFormDb.equals(tempPwd)) {
 			//update pwd in db with new pwd
-			interviewerrepo.updatePasswordByEmail(newPwd, email);
+			interviewerRepo.updatePasswordByEmail(newPwd, email);
+			
 			
 			return true;
 		}
@@ -137,9 +165,39 @@ public class InterviewerServiceImpl implements InterviewerService {
 	}
 
 	@Override
-	public Boolean lockActivationLink() {
+	public Boolean lockActivationLink(String email) {
 		// TODO Auto-generated method stub
-		return null;
+		//update acc to active
+		interviewerRepo.updateAccountStatus(true,email);
+		//set token value to null[token invalid] = lock link
+		interviewerRepo.updateToken("null",email);
+		String storedToken=interviewerRepo.getTokenByEmail(email);
+		if(storedToken == null || storedToken.equals("null") ) {
+			return true;
+		}else {
+			return false;
+		}
+
 	}
+	
+
+	@Override
+	public Boolean authenticateLinkStatus(String email,String reciveToken){
+		String storedToken=interviewerRepo.getTokenByEmail(email);
+		if("Not Provided".equals(reciveToken)) {
+			if(storedToken == null || storedToken.equals("null") ) {
+				return true;
+			}else {
+				return false;
+			}
+		}else {
+		if(storedToken == null || storedToken.equals("null")|| !storedToken.equals(reciveToken) ) {
+			return true;
+		}else {
+			return false;
+		}
+		}
+	}
+	
 
 }

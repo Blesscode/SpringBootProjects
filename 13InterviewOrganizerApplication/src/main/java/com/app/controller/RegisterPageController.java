@@ -29,7 +29,7 @@ public class RegisterPageController {
 	}
 	//2.Get registration page data
 	@PostMapping("/registerSubmit")
-	public String getRegistrationDtlsAndSendEmail( HttpServletResponse httpresponse,@ModelAttribute RegisterPageBinding registerdtls,Model model)throws Exception {
+	public String getRegistrationDtlsAndSendEmail( HttpServletResponse httpresponse, RegisterPageBinding registerdtls,Model model)throws Exception {
 		//1. get registration dtls from user
 		System.out.println(registerdtls);
 		httpresponse.setContentType("application/pdf");
@@ -51,7 +51,7 @@ public class RegisterPageController {
 
 		//4. create new registration page http req since old one is done by registring
 
-		return "registration";
+		return "redirect:registration";
 
 	}
 	

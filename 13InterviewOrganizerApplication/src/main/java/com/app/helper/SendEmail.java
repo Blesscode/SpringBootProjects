@@ -42,7 +42,11 @@ public class SendEmail {
 		document.add(paragraph);
 		document.close();
 	}
-
+	/*
+	 * Send the email
+	 * @param (Subject of email, Body content of email,Reciver of the mail)
+	 * @return Boolean
+	 */
 		@Autowired
 		private JavaMailSender mailSender; //interface provided by spring mail 
 		
@@ -66,6 +70,24 @@ public class SendEmail {
 				 e.printStackTrace(); // corrected from `printStacktrace`
 		            return false;
 			}
+		}
+		
+		/*
+		 * Create the email 
+		 * @param (the activation pwd , activation link)
+		 * @return Boolean
+		 */
+		public Boolean activationMailSending(String pwd, String link) {
+			// TODO Auto-generated method stub
+			
+			String subject="Your activation Link";
+			
+			String body="Your activation password is"+" "+pwd+" "+"to activate your account please click the following link and reset your password"+" "+link;
+			
+			String to="reciver@gmail.com";
+			
+			this.sendEmail(subject,body,to);
+			return true;
 		}
 		
 	

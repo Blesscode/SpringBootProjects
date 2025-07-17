@@ -20,25 +20,33 @@ public class UnlockPageController {
 
 	//1. show register page
 		@GetMapping("/activePage")
-		public String registrationPageShow(Model model,@RequestParam String email) {
+		public String registrationPageShow(Model model,@RequestParam String email, @RequestParam String token) {
+			//token auth to unactivate link
 			
+			if(service.authenticateLinkStatus( email,token)) {
+				model.addAttribute("message", "Invalid or expired activation link.");
+		        return "ActivePage"; //  return a Thymeleaf page showing "Link Expired"
+			}
 			model.addAttribute("email", email);
 		    model.addAttribute("activationPageBinding", new UnlockPageBinding());
 			return "ActivePage";
 		}
 		@PostMapping("/activationSubmit")
-		public String getData(UnlockPageBinding activedtls,@RequestParam String email,Model model ) {
+		public String unlockAcc(UnlockPageBinding activedtls,@RequestParam String email,Model model ) {
 			System.out.println(activedtls);
+			// to prevent multiple tab problem
+			if(service.authenticateLinkStatus(email, "Not Provided")==false) {
 			//1. get the email from path param[pass from url]=risky for email to pass use reqparam[pass from html body]
 			//1. perform check if the pwd is correct with email
 			 System.out.println("Temp Password: " + activedtls.getInterviewerPassword());
 			    System.out.println("New Password: " + activedtls.getChange_pwd());
 			    System.out.println("email: " + email);
-			Boolean Authcheck = service.authenticateUserTempPassword(activedtls.getInterviewerPassword(),email,activedtls.getChange_pwd());
+			Boolean Authcheck = service.activatingAccount(activedtls.getInterviewerPassword(),email,activedtls.getChange_pwd());
 			//2. redirect to login page else redirect to same page
 			if(Authcheck) {
 				//3. make the link dead
 				System.out.println("correct");
+				service.lockActivationLink(email);
 				 return "redirect:/registration";
 			}
 			System.out.println("wrong");
@@ -46,6 +54,13 @@ public class UnlockPageController {
 			model.addAttribute("email", email);
 		    model.addAttribute("activationPageBinding", new UnlockPageBinding());
 			return "ActivePage";
+			}
+			else {
+				
+				 model.addAttribute("message", "Invalid or expired activation link.");
+				 model.addAttribute("activationPageBinding", new UnlockPageBinding());
+					return "ActivePage";
+			}
 
 			
 			
