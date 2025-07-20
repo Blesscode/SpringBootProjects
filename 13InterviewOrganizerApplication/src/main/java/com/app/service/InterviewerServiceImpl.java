@@ -1,20 +1,20 @@
 package com.app.service;
 
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.binding.LoginPageBinding;
 import com.app.binding.RegisterPageBinding;
 import com.app.entity.InterviewerDtlsEntity;
 import com.app.helper.ActivationLinkGenerator;
 import com.app.helper.GeneratePwd;
 import com.app.helper.SendEmail;
 import com.app.repository.InterviewerDtlsRepo;
+
+import jakarta.servlet.http.HttpSession;
 
 @Service
 public class InterviewerServiceImpl implements InterviewerService {
@@ -27,6 +27,8 @@ public class InterviewerServiceImpl implements InterviewerService {
 	private SendEmail emailUtils;
 	@Autowired
 	private ActivationLinkGenerator linkGeneratorUtil;
+	@Autowired
+	private HttpSession session;
 
 	/*
 	 * To register new user account
@@ -92,55 +94,7 @@ public class InterviewerServiceImpl implements InterviewerService {
 		return null;
 	}
 
-	@Override
-	public Boolean findInterviewer(LoginPageBinding login) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	/*@Override
-	public Boolean activationMailSending(String pwd, String link) {
-		// TODO Auto-generated method stub
-		
-		String subject="Your activation Link";
-		
-		String body="Your activation password is"+" "+pwd+" "+"to activate your account please click the following link and reset your password"+" "+link;
-		
-		String to="reciver@gmail.com";
-		
-		emailUtils.sendEmail(subject,body,to);
-		return true;
-	}*/
-
-	@Override
-	public Boolean sendPwdToEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/*@Override
-	public String createActivationLink(String interviewer_email){
-		// TODO Auto-generated method stub
-		
-		
-		//1. get activation pwd: that is generated and saved to db
-
-		//String interviewer_username = register.getUsername();
-		//String interviewer_email = register.getInterviewerEmail();
-		//String activationPwd = interviewerrepo.findActivationPwd(interviewer_email, interviewer_username);
-		//2. create link
-		String token=interviewerRepo.findByActiveToken(interviewer_email) ;
-		String encodedEmail = URLEncoder.encode(interviewer_email, StandardCharsets.UTF_8);
-		String encodedToken = URLEncoder.encode(token, StandardCharsets.UTF_8);
-		String activationLink = "http://localhost:8080/activePage?token=" + encodedToken+"&email=" + encodedEmail;
-		System.out.println("Activation Link: " + activationLink);
-		
-		// before encoding = http://localhost:8080/ActivePage?token=56f04e3f-df11-44d9-9cc2-f0f72cea1ee0&email=abc@gmail.com
-		//2. send pwd to mail with activation page url [url is unique to each person]
-		//emailRepo.topdf(httpresponse, activationPwd, activationLink);
-		return activationLink;
-	}*/
-	
 	/*
 	 * Perform user account activation by taking the password provided and
 	 * check/authenticating if the password is correct then activate user account and save the new password
@@ -198,6 +152,52 @@ public class InterviewerServiceImpl implements InterviewerService {
 		}
 		}
 	}
+	
+	@Override
+    public Boolean loginAuth(String dtls, String pwd) {
+		if(dtls.contains("@gmail.com")) {
+			//check using email and pwd
+			List<InterviewerDtlsEntity> interviewerDtlsByEmail = interviewerRepo.findByInterviewerEmail(dtls);
+			System.out.println(interviewerDtlsByEmail);
+			if(!interviewerDtlsByEmail.isEmpty()) { //atleast 1 entry exist with this email
+				InterviewerDtlsEntity firstPersonEmailEntry =interviewerDtlsByEmail.get(0);
+				//check with pwd and active acc
+				if(firstPersonEmailEntry.getInterviewerPassword().equals(pwd)&& (interviewerRepo.findByInterviewerAccountActiveByEmail(dtls))) {
+					System.out.println("valid email & pwd");
+					//create session with interviewer-id
+					session.setAttribute("user-id", firstPersonEmailEntry.getInterviewerId());
+					return true;
+				}else {
+					System.out.println("in-valid email & pwd");
+					return false;
+				}
+			}else {
+				System.out.println("in-valid email & pwd");
+				return false;
+			}
+		}else {
+			//check using user-name and pwd
+			List<InterviewerDtlsEntity> interviewerDtlsByUsername = interviewerRepo.findByInterviewerUsername(dtls);
+			if(!interviewerDtlsByUsername.isEmpty()) { //atleast 1 entry exist with this email
+				InterviewerDtlsEntity firstPersonUsernameEntry =interviewerDtlsByUsername.get(0);
+				if(firstPersonUsernameEntry.getInterviewerPassword().equals(pwd)&& (interviewerRepo.findByInterviewerAccountActiveByUsername(dtls))) {
+					System.out.println("valid username and pwd");
+					//create session with interviewer-id
+					session.setAttribute("user-id", firstPersonUsernameEntry.getInterviewerId());
+					 String sessionId = session.getId();
+					    System.out.println("Session ID: " + sessionId);
+					return true;
+				}else {
+					System.out.println("in-valid username and pwd");
+					return false;
+				}
+			}else {
+				System.out.println("in-valid username and pwd");
+				return false;
+			}
+		}
+    	
+    }
 	
 
 }

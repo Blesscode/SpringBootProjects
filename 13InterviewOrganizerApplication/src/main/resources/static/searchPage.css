@@ -1,0 +1,73 @@
+ body {
+        background-color: #0a0a0a;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        padding: 1rem;
+      }
+
+      .container {
+        background: linear-gradient(to bottom, #1e1e1e, #0a0a0a);
+        border-radius: 12px;
+        box-shadow: 0 0 12px rgba(225, 183, 244, 0.15);
+      }
+
+      .header-head {
+        text-align: center;
+        margin-top: 1rem;
+        background: linear-gradient(to right, #6c2bd9, #b66eff);
+        color: #fff;
+      }
+
+      input[type="text"],
+      input[type="date"],
+      select,
+      .dropdown-toggle {
+        background: #1f1f1f !important;
+        color: #fff !important;
+        border: 1px solid #444 !important;
+        border-radius: 6px !important;
+        padding: 0.5rem 1rem !important;
+      }
+
+      .dropdown-menu {
+        background-color: #2a2a2a;
+        color: #fff;
+      }
+
+      .dropdown-menu a {
+        color: #fff;
+      }
+
+      .dropdown-menu a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .btn-sparkle,
+      .btn-secondary {
+        background: linear-gradient(to right, #6c2bd9, #b66eff);
+        border: none;
+        color: white;
+        transition: background 0.3s ease;
+      }
+
+      .btn-sparkle:hover {
+        background: linear-gradient(to right, #8e44ff, #d1a8ff);
+      }
+
+      .styled-table {
+        background: #181818;
+        color: #fff;
+      }
+
+      .styled-table th,
+      .styled-table td {
+        border-bottom: 1px solid #2a2a2a;
+      }
+
+      .export-head h3 {
+        color: #d3a5ff;
+      }
+
+      .text-light {
+        color: #bbb !important;
+      }

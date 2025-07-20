@@ -2,11 +2,16 @@ package com.app.entity;
 
 import java.time.LocalDate;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 @Entity
@@ -38,9 +43,14 @@ public class CandidateDtlsEntity {
      @Column(name = "candidateJoinMode")
      private String candidateJoinMode;
 
+     @CreationTimestamp
      @Column(name = "candidateInterviewDate")
      private LocalDate candidateInterviewDate;
-
+     @UpdateTimestamp
      @Column(name = "candidateConfirmationDate")
      private LocalDate candidateConfirmationDate;
+     
+     @ManyToOne
+     @JoinColumn(name="interviewerId")
+     private InterviewerDtlsEntity interviewer;
 }

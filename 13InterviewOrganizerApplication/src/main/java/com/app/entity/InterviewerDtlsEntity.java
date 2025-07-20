@@ -1,10 +1,15 @@
 package com.app.entity;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -30,5 +35,9 @@ public class InterviewerDtlsEntity {
 	private boolean interviewerAccountActive; 
 	@Column(name="activeToken")
 	private String activeToken;//unique activation token
+	
+	@OneToMany(mappedBy = "interviewer",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	private List<CandidateDtlsEntity>candidatesInterviewed;
+	
 	
 }

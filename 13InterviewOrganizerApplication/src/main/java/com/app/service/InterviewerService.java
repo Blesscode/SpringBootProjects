@@ -11,24 +11,16 @@ public interface InterviewerService  {
 	//1. register the user with the website i.e. create an acc
 	Boolean registerNewInterviewer(RegisterPageBinding register);
 	
-	   //helper service methods for registering the user
-		//Boolean saveNewInterviewer(RegisterPageBinding register);
-		
-		//String createActivationLink(String email);
-		
-		//Boolean activationMailSending(String pwd, String mail);
-	
 	//2. unlock it's acc
 	Boolean activatingAccount(String tempPwd,String email,String newPwd);
-
-	Boolean findInterviewer(LoginPageBinding login);
-
-
-
-	Boolean sendPwdToEmail(String email);
-
 	
-
+	//3. lock activation link for user
 	Boolean lockActivationLink(String email);
+	
+	//4. authenticate account active status
     Boolean authenticateLinkStatus(String email,String reciveToken);
+    
+    //1. Login auth
+    Boolean loginAuth(String dtls, String pwd);
+    
 }

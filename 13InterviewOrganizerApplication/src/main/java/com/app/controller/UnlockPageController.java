@@ -47,7 +47,7 @@ public class UnlockPageController {
 				//3. make the link dead
 				System.out.println("correct");
 				service.lockActivationLink(email);
-				 return "redirect:/registration";
+				 return "redirect:/login";
 			}
 			System.out.println("wrong");
 			//return "redirect:/activePage/{email}";

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" th:href="@{/dashboard.css}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <div class="burger" id="burger">&#9776;</div>
+
+        <nav id="menu">
+          <ul>
+            <li class="active">Dashboard</li>
+            <li>Add Candidates</li>
+            <li>View Candidates</li>
+          </ul>
+        </nav>
+      </aside>
+
+      <div class="main">
+        <header class="topbar">
+          <h1>Dashboard</h1>
+          <div class="user-profile" id="userIcon">
+            👤
+            <div class="dropdown" id="dropdownMenu">
+              <ul>
+                <li onclick="location.href='/logout'">Logout</li>
+                <li>Profile</li>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+        <section class="cards">
+          <div class="card">
+            <h3>Total Candidates Interviewed</h3>
+            <p>1,248</p>
+          </div>
+          <div class="card">
+            <h3>Candidate Status Updated</h3>
+            <p>$12,340</p>
+          </div>
+          <div class="card">
+            <h3>Candidate Left</h3>
+            <p>5.6%</p>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script th:src="@{/dashboardScript.js}"></script>
+  </body>
+</html>

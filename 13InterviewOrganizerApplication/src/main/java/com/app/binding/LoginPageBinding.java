@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class LoginPageBinding {
 
-	private String username;
-	private String password;
-}
+	private String interviewerDtls;
+	private String interviewerPassword;
+	}

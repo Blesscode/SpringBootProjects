@@ -18,6 +18,11 @@ public interface InterviewerDtlsRepo extends JpaRepository<InterviewerDtlsEntity
 	List<InterviewerDtlsEntity> findByInterviewerName(String interviewerName);
 	List<InterviewerDtlsEntity> findByInterviewerEmail(String interviewerEmail);
 	List<InterviewerDtlsEntity> findByInterviewerPassword(String interviewerPassword);
+	List<InterviewerDtlsEntity> findByInterviewerUsername(String interviewerUsername);
+    @Query("select interviewerAccountActive from InterviewerDtlsEntity where interviewerEmail=:email ")
+	Boolean findByInterviewerAccountActiveByEmail(@Param("email")String email);
+    @Query("select interviewerAccountActive from InterviewerDtlsEntity where interviewerUsername=:username ")
+	Boolean findByInterviewerAccountActiveByUsername(@Param("username")String username);
 	@Query("select activeToken from InterviewerDtlsEntity where interviewerEmail=:email ")
 	String findByActiveToken(@Param("email")String email);
 
