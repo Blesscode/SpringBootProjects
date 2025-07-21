@@ -166,6 +166,9 @@ public class InterviewerServiceImpl implements InterviewerService {
 					System.out.println("valid email & pwd");
 					//create session with interviewer-id
 					session.setAttribute("user-id", firstPersonEmailEntry.getInterviewerId());
+					session.setAttribute("username",firstPersonEmailEntry.getInterviewerName() );
+					String sessionId = session.getId();
+				    System.out.println("Session ID: " + sessionId);
 					return true;
 				}else {
 					System.out.println("in-valid email & pwd");
@@ -184,6 +187,7 @@ public class InterviewerServiceImpl implements InterviewerService {
 					System.out.println("valid username and pwd");
 					//create session with interviewer-id
 					session.setAttribute("user-id", firstPersonUsernameEntry.getInterviewerId());
+					session.setAttribute("username",firstPersonUsernameEntry.getInterviewerName() );
 					 String sessionId = session.getId();
 					    System.out.println("Session ID: " + sessionId);
 					return true;

@@ -35,3 +35,4 @@ public class LoginPageController {
 		return "redirect:/login";
 	}
 }
+
