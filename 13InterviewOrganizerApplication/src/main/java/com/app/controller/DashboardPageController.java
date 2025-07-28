@@ -27,7 +27,7 @@ public class DashboardPageController {
 	        return "redirect:/login";
 	    }
 	    model.addAttribute("UserName", request.getSession(false).getAttribute("username"));
-		return "Dashboard";
+		return "redirect:/dashboard";
 	}
 	@GetMapping("/logout")
 	public String logoutAction(HttpServletRequest request, HttpServletResponse response) {
