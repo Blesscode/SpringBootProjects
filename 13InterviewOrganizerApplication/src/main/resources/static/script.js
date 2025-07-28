@@ -1,3 +1,13 @@
+//  Clear autofilled inputs when coming back to login page via browser back button
+window.addEventListener("pageshow", function (event) {
+  if (
+    event.persisted || 
+    performance.getEntriesByType("navigation")[0]?.type === "back_forward"
+  ) {
+    const inputs = document.querySelectorAll("input[type='text'], input[type='password']");
+    inputs.forEach(input => input.value = "");
+  }
+});
 
 gsap.from(".animateText>h2",{
 
@@ -31,3 +41,4 @@ gsap.from(".inputFeilds",{
     //duration:0.6,
     ///stagger:1
 })
+

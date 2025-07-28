@@ -28,14 +28,14 @@
         class="card login d-flex justify-content-center align-items-center flex-wrap text-white"
       >
         <div class="registerText d-flex">
-          <form class="row g-3" th:action="@{/loginSubmit}" th:object="${loginmodel}" method="post">
+          <form class="row g-3" th:action="@{/loginSubmit}" th:object="${loginmodel}" method="post" autocomplete="off">
             <div class="col-md-6 inputFeilds">
               <label for="inputEmail4" class="form-label">Email/Username</label>
-              <input type="text" class="form-control" id="inputEmail4" th:field="*{interviewerDtls}" />
+              <input type="text" class="form-control" id="inputEmail4" th:field="*{interviewerDtls}" autocomplete="off"/>
             </div>
             <div class="col-md-6 inputFeilds">
               <label for="inputPassword4" class="form-label">Password</label>
-              <input type="password" class="form-control" id="inputPassword4" th:field="*{interviewerPassword}"/>
+              <input type="password" class="form-control" id="inputPassword4" th:field="*{interviewerPassword}" autocomplete="new-password"/>
             </div>
             <a href="" class="text-white inputFeilds">Forgot Password ?</a>
             <button class="metallic-btn inputFeilds">Login</button>
@@ -62,5 +62,7 @@
       integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
       crossorigin="anonymous"
     ></script>
+    
+
   </body>
 </html>

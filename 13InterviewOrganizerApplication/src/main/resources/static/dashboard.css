@@ -197,3 +197,16 @@ body {
   display: block;
 }
 
+
+
+
+.sidebar nav li a {
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+
+
+

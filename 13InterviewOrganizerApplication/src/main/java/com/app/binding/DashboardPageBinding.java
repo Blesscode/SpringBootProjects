@@ -7,6 +7,7 @@ public class DashboardPageBinding {
 
 	private Integer total;
 	private Integer left;
-	private Integer updated;
+	private Integer pending;
+	private Integer accepted;
 	
 }

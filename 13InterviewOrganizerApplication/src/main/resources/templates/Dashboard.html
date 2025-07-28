@@ -21,8 +21,8 @@
         <nav id="menu">
           <ul>
             <li class="active">Dashboard</li>
-            <li>Add Candidates</li>
-            <li>View Candidates</li>
+             <li><a href="/addPage">Add Candidates</a></li>
+            <li><a href="/view-candidates">View Candidates</a></li>
           </ul>
         </nav>
       </aside>
@@ -44,15 +44,19 @@
         <section class="cards">
           <div class="card">
             <h3>Total Candidates Interviewed</h3>
-            <p>1,248</p>
+            <p th:text="${dashboardData.total}"></p>
           </div>
           <div class="card">
-            <h3>Candidate Status Updated</h3>
-            <p>$12,340</p>
+            <h3>Candidate Status Not Yet Updated</h3>
+            <p th:text="${dashboardData.pending}"></p>
           </div>
           <div class="card">
             <h3>Candidate Left</h3>
-            <p>5.6%</p>
+            <p th:text="${dashboardData.left}"></p>
+          </div>
+          <div class="card">
+            <h3>Candidate Accepted</h3>
+            <p th:text="${dashboardData.accepted}"></p>
           </div>
         </section>
       </div>
