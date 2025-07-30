@@ -1,16 +1,18 @@
 package com.app.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import com.app.repository.JobRoleOptionsRepo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.binding.AddPageBinding;
 import com.app.binding.DashboardPageBinding;
 import com.app.entity.CandidateDtlsEntity;
 import com.app.entity.InterviewerDtlsEntity;
 import com.app.repository.InterviewerDtlsRepo;
+import com.app.repository.JobRoleOptionsRepo;
+import com.app.repository.JoinModeOptionsRepo;
 
 @Service
 public class CandidateServiceImpl implements CandidateService {
@@ -18,6 +20,12 @@ public class CandidateServiceImpl implements CandidateService {
 	@Autowired
 	//private CandidateDtlsRepo candidateRepo;
 	private InterviewerDtlsRepo interviewerRepo;
+
+	@Autowired
+	private JobRoleOptionsRepo jobRoleRepo;
+
+	@Autowired
+	private JoinModeOptionsRepo joinModeRepo;
 
 	@Override
 	public DashboardPageBinding getDashboardData(Integer interviewerId) {
@@ -61,6 +69,21 @@ public class CandidateServiceImpl implements CandidateService {
 		
 		return dashboardBinding;
 	}
-	
+
+	//get the dropdown data 
+	@Override
+	public List<String> getjobRoles(){
+		return jobRoleRepo.listOfRoles();
+	}
+	@Override
+	public List<String> getjoinModes(){
+		return joinModeRepo.listOfModes();
+	}
+	@Override
+	public Boolean saveCandidate(AddPageBinding addBinding){
+		
+		return null;
+		
+	}
 
 }

@@ -16,43 +16,58 @@
       style="max-width: 500px; margin: auto; padding: 2rem"
     >
       <h2 class="header-head">Add Candidate</h2>
-      <form>
+      <form th:action="@{/addSubmit}" th:object="${addBinding}" method="post">
         <div class="form-group">
-          <label for="studentName">Student Name</label>
-          <input type="text" id="studentName" name="studentName" required />
+          <label for="studentName">Candidate Name</label>
+          <input
+            th:field="*{CandidateName}"
+            type="text"
+            id="CandidateName"
+            required
+          />
         </div>
 
         <div class="form-group">
           <label for="phno">Phone Number</label>
-          <input type="text" id="phno" name="phno" required />
+          <input th:field="*{phoneNo}" type="text" id="phoneNo" required />
         </div>
 
         <div class="form-group">
-          <label for="classMode">Class Mode</label>
-          <select id="classMode" name="classMode" required>
+          <label for="email">Email</label>
+          <input th:field="*{email}" type="text" id="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="classMode">Job Role</label>
+          <select th:field="*{job_Role}" id="JobMode" required>
             <option value="">Select Mode</option>
-            <option value="Online">Online</option>
-            <option value="Offline">Offline</option>
+            <option
+              th:each="i : ${roles}"
+              th:value="${i}"
+              th:text="${i}"
+            ></option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="course">Course</label>
-          <select id="course" name="course" required>
+          <label for="course">Join Mode</label>
+          <select th:field="*{join_Mode}" id="course" name="course" required>
             <option value="">Select Course</option>
-            <option value="Java">Java</option>
-            <option value="Python">Python</option>
-            <option value="DevOps">DevOps</option>
+            <option
+              th:each="j : ${modes}"
+              th:value="${j}"
+              th:text="${j}"
+            ></option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="enquiryStatus">Enquiry Status</label>
-          <select id="enquiryStatus" name="enquiryStatus" required>
+          <label for="enquiryStatus"> Status</label>
+          <select th:field="*{status}" id="enquiryStatus" required>
             <option value="">Select Status</option>
-            <option value="New">New</option>
-            <option value="Follow Up">Follow Up</option>
-            <option value="Closed">Closed</option>
+            <option value="New">Pending</option>
+            <option value="Follow Up">Rejected</option>
+            <option value="Closed">Accepted</option>
           </select>
         </div>
 

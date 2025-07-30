@@ -10,5 +10,5 @@ import com.app.entity.JoinModeOptionsEntity;
 public interface JoinModeOptionsRepo extends JpaRepository<JoinModeOptionsEntity, Integer>{
 	//find all unique join-mode names from all the join-mode present
 	@Query("select distinct u.joinModeName from JoinModeOptionsEntity u")
-	List<String> listOfRoles();
+	List<String> listOfModes();
 }

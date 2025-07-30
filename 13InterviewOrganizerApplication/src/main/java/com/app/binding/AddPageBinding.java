@@ -6,9 +6,9 @@ import lombok.Data;
 public class AddPageBinding {
 
 	private String CandidateName;
-	private Long PhoneNo;
-	private String Email;
-	private String Job_Role;
-	private String Join_Mode;
-	private String Status;
+	private Long phoneNo;
+	private String email;
+	private String job_Role;
+	private String join_Mode;
+	private String status;
 }
